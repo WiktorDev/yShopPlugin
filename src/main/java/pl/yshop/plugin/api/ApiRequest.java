@@ -3,9 +3,7 @@ package pl.yshop.plugin.api;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.SneakyThrows;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 import pl.yshop.plugin.Main;
 
 public class ApiRequest {
@@ -13,7 +11,7 @@ public class ApiRequest {
     public static JsonObject getPendingTransactions(){
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         Request request = new Request.Builder()
-                .url("http://1c49-62-133-144-183.ngrok.io/publicapi/server/"+Main.getInstance().getConfiguration().getServer()+"/pendingTransactions")
+                .url(Main.getInstance().getConfiguration().getListPath())
                 .method("GET", null)
                 .addHeader("Auth", Main.getInstance().getConfiguration().getApikey())
                 .build();
@@ -24,6 +22,15 @@ public class ApiRequest {
 
     @SneakyThrows
     public static void completeTransaction(String uuid){
-
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        RequestBody body = RequestBody.create(mediaType, "uuid="+uuid);
+        Request request = new Request.Builder()
+                .url(Main.getInstance().getConfiguration().getCompletePath())
+                .method("POST", body)
+                .addHeader("Auth", Main.getInstance().getConfiguration().getApikey())
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .build();
+        Response response = client.newCall(request).execute();
     }
 }

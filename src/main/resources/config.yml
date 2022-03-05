@@ -1,0 +1,5 @@
+auth:
+  #Klucz API z panelu yShop (https://yshop.pl/panel/manage/ID_SKLEPU/api
+  apikey: 'eQASSpt18gcxyPVhtlJn23zOE'
+  #Nazwa serwera z panelu yShop
+  server: 'survival'

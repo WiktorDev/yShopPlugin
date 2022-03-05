@@ -1,0 +1,6 @@
+name: yShopPlugin
+version: '${project.version}'
+main: pl.yshop.plugin.Main
+api-version: 1.16
+author: wiktor#8880
+website: 'https://yshop.pl'

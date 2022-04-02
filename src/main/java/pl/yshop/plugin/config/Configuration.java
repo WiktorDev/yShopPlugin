@@ -10,7 +10,7 @@ import java.util.logging.Level;
 @Getter
 @Setter
 public class Configuration {
-    private String apiurl = "https://yshop.pl/publicapi/";
+    private String apiurl = "https://api.yshop.pl/publicapi/";
     private String apikey;
     private String server;
     private String listPath;

@@ -14,6 +14,6 @@ public class CommandsExecutionTask extends ShopExecutionTask {
 
     @Override
     public void executeCommand(String command) {
-        this.server.getScheduler().runTask(this.plugin, () -> this.server.dispatchCommand(this.server.getConsoleSender(), command));
+        this.server.getScheduler().runTask(this.plugin, ()-> this.server.dispatchCommand(this.server.getConsoleSender(), command));
     }
 }

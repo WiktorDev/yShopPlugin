@@ -8,8 +8,10 @@ public class Serializer {
         Set<String> set = new HashSet();
         String[] split = string.split("\\|\\|");
         for(int index = 0; index < split.length; ++index) {
-            String command = split[index];
-            set.add(command);
+            if(split[index] != null){
+                String command = split[index];
+                set.add(command);
+            }
         }
         return set;
     }

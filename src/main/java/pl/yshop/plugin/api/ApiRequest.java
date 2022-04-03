@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import lombok.SneakyThrows;
 import okhttp3.*;
 import pl.yshop.plugin.Main;
+import pl.yshop.plugin.utils.Logger;
 
 public class ApiRequest {
     @SneakyThrows
@@ -16,7 +17,25 @@ public class ApiRequest {
                 .addHeader("Auth", Main.getInstance().getConfiguration().getApikey())
                 .build();
         Response response = client.newCall(request).execute();
+        if(response == null) return null;
+        if(Main.getInstance().getConfiguration().isDebug() && response.code() != 200){
+            switch (response.code()){
+                case 401:
+                    Logger.logError("Nazwa serwera, klucz API badz adres api jest niepoprawny!");
+                    response.body().close();
+                    return null;
+                case 404:
+                    Logger.logInfo("Nie odnaleziono nowych transakcji do wykonania");
+                    response.body().close();
+                    return null;
+                default:
+                    Logger.logWarning("Nieznany status HTTP!");
+                    response.body().close();
+                    return null;
+            }
+        }
         JsonObject object = new JsonParser().parse(response.body().string()).getAsJsonObject();
+        response.body().close();
         return object;
     }
 
@@ -32,5 +51,6 @@ public class ApiRequest {
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .build();
         Response response = client.newCall(request).execute();
+        response.close();
     }
 }

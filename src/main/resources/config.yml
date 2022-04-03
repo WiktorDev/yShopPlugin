@@ -3,3 +3,7 @@ auth:
   apikey: 'eQASSpt18gcxyPVhtlJn23zOE'
   #Nazwa serwera z panelu yShop
   server: 'survival'
+  #Adres serwera API. NIE ZMIENIAJ TEJ LINIJKI
+  apiurl: 'https://api.yshop.pl/publicapi/'
+#Jezeli funkcja jest wlaczona w konsoli beda wyswietlane wiadomosci zwrote z API
+debug: true

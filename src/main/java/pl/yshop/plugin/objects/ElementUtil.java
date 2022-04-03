@@ -14,6 +14,7 @@ public class ElementUtil {
 
     @SneakyThrows
     public void loadElements(JsonObject object){
+        if(object == null || object.isJsonNull()) return;
         elements.clear();
         object.get("data").getAsJsonArray().forEach(jsonElement -> {
             Element element = new Element(jsonElement.getAsJsonObject());

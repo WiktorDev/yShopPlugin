@@ -19,6 +19,7 @@ public abstract class ShopExecutionTask implements Runnable {
                 String formmatedCommand = command.replace("{PLAYER}", element.getNickname()).replace("{COUNT}", String.valueOf(element.getCount()));
                 this.executeCommand(formmatedCommand);
             });
+            ElementUtil.getElements().remove(element);
             ApiRequest.completeTransaction(paymentUUID);
         });
     }

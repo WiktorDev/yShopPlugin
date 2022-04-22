@@ -2,10 +2,14 @@
 A plugin that enables communication minecraft server with yshop.pl API.
 
 ## Plugin configuration
-```
+```yml
 auth:
   #Klucz API z panelu yShop (https://yshop.pl/panel/manage/ID_SKLEPU/api)
-  apikey: 'XXXXXXXXX'
+  apikey: 'XXXXXXXXXXX'
   #Nazwa serwera z panelu yShop
-  server: 'survival'
+  server: 'testowy1'
+  #Adres serwera API. NIE ZMIENIAJ TEJ LINIJKI
+  apiurl: 'https://api.yshop.pl/publicapi/'
+#Jezeli funkcja jest wlaczona w konsoli beda wyswietlane wiadomosci zwrote z API
+debug: false
 ```

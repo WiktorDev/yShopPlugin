@@ -1,11 +1,7 @@
 package pl.yshop.plugin.objects;
 
 import com.google.gson.JsonObject;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class Element {
     private String uuid;
     private String nickname;
@@ -19,5 +15,25 @@ public class Element {
         this.count = object.get("count").getAsInt();
         this.server = object.get("server").getAsString();
         this.command = object.get("command").getAsString();
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public String getServer() {
+        return server;
+    }
+
+    public String getCommand() {
+        return command;
     }
 }

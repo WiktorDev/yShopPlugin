@@ -1,7 +1,6 @@
 package pl.yshop.plugin.objects;
 
 import com.google.gson.JsonObject;
-import lombok.SneakyThrows;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,9 @@ public class ElementUtil {
         return elements;
     }
 
-    @SneakyThrows
     public void loadElements(JsonObject object){
-        if(object == null || object.isJsonNull()) return;
         elements.clear();
+        if(object == null || object.isJsonNull()) return;
         object.get("data").getAsJsonArray().forEach(jsonElement -> {
             Element element = new Element(jsonElement.getAsJsonObject());
             elements.add(element);

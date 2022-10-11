@@ -36,6 +36,7 @@ public class ApiRequest {
                         return null;
                 }
             }
+            if(response.code() == 404) return null;
             object = new JsonParser().parse(response.body().string()).getAsJsonObject();
             response.body().close();
         }catch (IOException exception){

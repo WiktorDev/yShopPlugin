@@ -1,3 +1,4 @@
+# TA WERSJA PLUGINU JEST DO API v3! DO API v4 NALEZY UZYC https://github.com/yshop-pl/yshop-plugin
 # yShopPlugin
 A plugin that enables communication minecraft server with yshop.pl API.
 
